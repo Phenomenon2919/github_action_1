@@ -1,0 +1,14 @@
+name: Basic Shell Commands
+
+on: [push]
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo a string
+        run: echo "Simple Github action!"
+      - name: multiline script example
+        run: |
+          node -v
+          npm -v
