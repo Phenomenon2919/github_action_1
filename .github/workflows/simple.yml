@@ -2,7 +2,7 @@ name: Basic Shell Commands
 
 on: 
   schedule:
-    - cron: "0/5 * * * *" 
+    - cron: "18 15 * * *" 
 
 jobs:
   run-shell-command:
