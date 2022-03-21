@@ -1,8 +1,6 @@
 name: Actions Workflow
 
-on:
-  schedule:
-    - cron: "25 15 * * *"
+on: [push]
 
 jobs:
   running-actions:

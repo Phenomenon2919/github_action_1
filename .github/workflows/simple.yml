@@ -1,8 +1,8 @@
 name: Basic Shell Commands
 
 on: 
-  schedule:
-    - cron: "18 15 * * *" 
+  repository_dispatch:
+    types: [build]
 
 jobs:
   run-shell-command:
@@ -19,6 +19,8 @@ jobs:
           import platform
           print(platform.processor())
         shell: python
+      - name: Echo client payload
+        run: echo ${{ github.event.client_payload.Fruit }}
   run-windows-commands:
     runs-on: windows-latest
     steps:
