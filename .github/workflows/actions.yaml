@@ -2,30 +2,39 @@ name: Actions Workflow
 
 on: [push]
 
+env:
+  WF_ENV: WF_ENV
+
 jobs:
   running-actions:
     runs-on: ubuntu-latest
+    env:
+      JOB_ENV: JOB_ENV
     steps:
       - name: List Files
         run: |
           pwd
           ls -a
       - name: Observing Environmental variables
+        env:
+          STEP_ENV: STEP_ENV
         run: |
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
-          echo "${{ github.token }}"
-      - name: Checkout code
-        uses: actions/checkout@v1
-      - name: List files post checkout
-        run: |
-          pwd
-          ls -a
+          echo $GITHUB_ACTION
+          echo $GITHUB_ACTIONS
+          echo $GITHUB_ACTOR
+          echo $GITHUB_REF
+          echo $WF_ENV
+          echo $JOB_ENV
+          echo $STEP_ENV
       - name: Simple JS action
         id: greet
         uses: actions/hello-world-javascript-action@v1.1
         with:
           who-to-greet: Void
       - name: Log Greeting time
-        run: echo "${{ steps.greet.outputs.time }}"
+        run: |
+          echo "${{ steps.greet.outputs.time }}"
+          echo $STEP_ENV
