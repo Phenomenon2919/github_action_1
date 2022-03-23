@@ -3,7 +3,7 @@ name: Actions Workflow
 on: [push]
 
 env:
-  WF_ENV: WF_ENV
+  WF_ENV: WF_ENV1
 
 jobs:
   running-actions:
