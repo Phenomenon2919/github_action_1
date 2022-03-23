@@ -20,7 +20,7 @@ jobs:
           print(platform.processor())
         shell: python
       - name: Echo client payload
-        run: echo "${{ github.event.client_payload.Fruit }}"
+        run: echo "${{ github.event.client_payload.fruit }}"
   run-windows-commands:
     runs-on: windows-latest
     steps:
