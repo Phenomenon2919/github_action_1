@@ -2,7 +2,7 @@ name: Basic Shell Commands
 
 on:
   repository_dispatch:
-    # types: [build]
+    types: [build]
 
 jobs:
   run-shell-command:
