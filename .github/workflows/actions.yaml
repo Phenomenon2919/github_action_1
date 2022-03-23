@@ -29,12 +29,16 @@ jobs:
           echo $WF_ENV
           echo $JOB_ENV
           echo $STEP_ENV
-      - name: Simple JS action
-        id: greet
-        uses: actions/hello-world-javascript-action@v1.1
-        with:
-          who-to-greet: Void
-      - name: Log Greeting time
+  decrypt-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Decrypt File
+        env:
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/test_secret.json test_github_secret.json
+      - name: List Contents
         run: |
-          echo "${{ steps.greet.outputs.time }}"
-          echo $STEP_ENV
+          pwd
+          ls -al
+          cat $HOME/test_secret.json
