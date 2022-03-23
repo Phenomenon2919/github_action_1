@@ -36,7 +36,7 @@ jobs:
       - name: Decrypt File
         env:
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/test_secret.json test_github_secret.json
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/test_secret.json test_github_secret.json.gpg
       - name: List Contents
         run: |
           pwd
