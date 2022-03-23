@@ -1,6 +1,10 @@
 name: Basic Shell Commands
 
 on: 
+  push:
+    branches:
+      - manual
+
   repository_dispatch:
     # types: [build]
 
