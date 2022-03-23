@@ -1,10 +1,6 @@
 name: Basic Shell Commands
 
-on: 
-  push:
-    branches:
-      - manual
-
+on:
   repository_dispatch:
     # types: [build]
 
@@ -24,7 +20,7 @@ jobs:
           print(platform.processor())
         shell: python
       - name: Echo client payload
-        run: echo "${{ github.event.client_payload.fruit }}"
+        run: echo "${{ github.event.client_payload.env }}"
   run-windows-commands:
     runs-on: windows-latest
     steps:
