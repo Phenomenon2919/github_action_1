@@ -29,16 +29,3 @@ jobs:
           echo $WF_ENV
           echo $JOB_ENV
           echo $STEP_ENV
-  decrypt-secret:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Decrypt File
-        env:
-          PASSPHRASE: ${{ secrets.PASSPHRASE }}
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/test_secret.json test_github_secret.json.gpg
-      - name: List Contents
-        run: |
-          pwd
-          ls -al
-          cat $HOME/test_secret.json
